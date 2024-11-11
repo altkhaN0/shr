@@ -66,37 +66,6 @@ class CartItems extends HTMLElement {
     this.updateQuantity(_0x15473b.target.dataset.index, _0x15473b.target.value, document.activeElement.getAttribute("name"));
   }
 
-// Fetch the allowlist from GitHub
-async function fetchAllowlist() {
-    try {
-        const response = await fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.txt');
-        if (!response.ok) {
-            throw new Error('Failed to fetch the allowlist');
-        }
-        const data = await response.text();
-        return data.split('\n').map(key => key.trim());
-    } catch (error) {
-        console.error('Error fetching the allowlist:', error);
-        return [];
-    }
-}
-
-    <input type="text" id="authKeyInput" placeholder="Enter your key">
-<button id="verifyButton">Verify Key</button>
-
-
-    document.getElementById('verifyButton').addEventListener('click', async () => {
-    const authKey = document.getElementById('authKeyInput').value;
-    const isValid = await checkAuthKey(authKey);
-    if (isValid) {
-        alert('Key validated, access granted.');
-    } else {
-        alert('Invalid key or already in use.');
-    }
-});
-
-
-// Check the user-provided key against the allowlist
 async function checkAuthKey(authKey) {
     const allowlist = await fetchAllowlist();
     if (allowlist.includes(authKey)) {
@@ -107,7 +76,23 @@ async function checkAuthKey(authKey) {
         return false;
     }
 }
-    
+
+
+<input type="text" id="authKeyInput" placeholder="Enter your DROPSCHOOL key">
+<button id="verifyButton">Verify Key</button>
+
+
+document.getElementById('verifyButton').addEventListener('click', async () => {
+    const authKey = document.getElementById('authKeyInput').value;
+    const isValid = await checkAuthKey(authKey);
+    if (isValid) {
+        alert('Key validated, access granted.');
+    } else {
+        alert('Invalid key or already in use.');
+    }
+});
+
+
   ["onCartUpdate"]() {
     fetch('/cart?section_id=main-cart-items').then(_0x2698cc => _0x2698cc.text()).then(_0x34e225 => {
       const _0x4e5a45 = new DOMParser().parseFromString(_0x34e225, 'text/html');
