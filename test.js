@@ -21,6 +21,9 @@ fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.
     console.error('JSON dosyasını çekme hatası:', error);
   });
 
+console.log("Tema ayarlarından alınan anahtar:", "{{ settings.animations_type }}");
+
+
 
 const a0_0x262bb0 = a0_0x103f;
 (function(_0x245a1c, _0x15a622) {
