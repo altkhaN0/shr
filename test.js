@@ -20,15 +20,15 @@ function publish(_0x5e90c7, _0x6858b2) {
   }
 }
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('/path/to/allowlist.json')
+  fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.json')
     .then(response => response.json())
     .then(data => {
       const allowedKeys = data.allowed_keys;
-      const enteredKey = "{{ settings.animations_type }}"; // Liquid kullanımı
+      const enteredKey = "{{ settings.animations_type }}"; // Liquid kullanımıyla anahtar değerini çekin
 
       if (allowedKeys.includes(enteredKey)) {
         console.log('Theme activated.');
-        // Buraya tema çalıştırma ya da aktivasyon kodunuzu ekleyin
+        // Tema çalıştırma veya aktivasyon kodlarını buraya ekleyin
       } else {
         console.warn('Invalid key. Theme not activated.');
       }
