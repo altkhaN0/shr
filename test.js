@@ -1,3 +1,15 @@
+fetch('allowlist.json')
+  .then(response => response.json())
+  .then(data => {
+    const allowedKeys = data.allowed_keys;
+    if (allowedKeys.includes(animationsType)) {
+      console.log('Geçerli anahtar. Tema aktif ediliyor.');
+      // Burada temanın aktif hale gelmesini sağlayan işlemleri yap
+    } else {
+      console.log('Geçersiz anahtar.');
+    }
+  });
+
 const a0_0x262bb0 = a0_0x103f;
 (function(_0x245a1c, _0x15a622) {
     const _0xeded05 = a0_0x103f
@@ -13,20 +25,6 @@ const a0_0x262bb0 = a0_0x103f;
             _0x592abd['push'](_0x592abd['shift']());
         }
     }
-  
-fetch('allowlist.json')
-  .then(response => response.json())
-  .then(data => {
-    const allowedKeys = data.allowed_keys;
-    if (allowedKeys.includes(animationsType)) {
-      console.log('Geçerli anahtar. Tema aktif ediliyor.');
-      // Burada temanın aktif hale gelmesini sağlayan işlemleri yap
-    } else {
-      console.log('Geçersiz anahtar.');
-    }
-  });
-
-  
 }(a0_0x91c8, 0xe2dfe));
 const ON_CHANGE_DEBOUNCE_TIMER = 0x12c
   , currentDate = new Date()
