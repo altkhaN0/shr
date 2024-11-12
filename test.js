@@ -1,10 +1,9 @@
 const userKey = "{{ settings.authenticator_key }}"; // Shopify tema ayarlarından gelen anahtar
 
 fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.json')
-  .then(response => response.text())
+  .then(response => response.json())
   .then(data => {
-    const validKeys = data.split('\n').map(key => key.trim()); // Satırları ayır ve boşlukları temizle
-    if (validKeys.includes(userKey)) {
+    if (data.keys.includes(userKey)) {
       console.log('Geçerli anahtar. Tema aktif.');
       // Tema içeriğini çalıştır
     } else {
@@ -13,6 +12,7 @@ fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.
     }
   })
   .catch(error => console.error('Anahtar doğrulama hatası:', error));
+
 
 const currentDate = new Date();
 let subscribers = {};
