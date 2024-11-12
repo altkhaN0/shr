@@ -14,19 +14,18 @@ const a0_0x262bb0 = a0_0x103f;
         }
     }
   
- document.addEventListener('DOMContentLoaded', function() {
-  const allowedKeys = ["TEST1", "TEST2", "TEST3"]; // Test amaçlı olarak doğrudan ekleyin
-  const enteredKey = "{{ settings.animations_type }}";
-  
-  console.log('Entered key:', enteredKey);
+fetch('allowlist.json')
+  .then(response => response.json())
+  .then(data => {
+    const allowedKeys = data.allowed_keys;
+    if (allowedKeys.includes(animationsType)) {
+      console.log('Geçerli anahtar. Tema aktif ediliyor.');
+      // Burada temanın aktif hale gelmesini sağlayan işlemleri yap
+    } else {
+      console.log('Geçersiz anahtar.');
+    }
+  });
 
-  if (allowedKeys.includes(enteredKey)) {
-    console.log('Theme activated.');
-    // Burada temayı aktif edecek kodlarınızı çalıştırın
-  } else {
-    console.warn('Invalid key. Theme not activated.');
-  }
-});
   
 }(a0_0x91c8, 0xe2dfe));
 const ON_CHANGE_DEBOUNCE_TIMER = 0x12c
