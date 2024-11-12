@@ -1,22 +1,19 @@
-// Shopify'dan gelen anahtarı almak
-const userKey = "{{ settings.authenticator_key }}";
+const userKey = "{{ settings.authenticator_key }}"; // Shopify tema ayarlarından gelen anahtar
 
-// Anahtarın doğruluğunu kontrol et
-fetch('https://yourserver.com/verify-key', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ key: userKey })
-})
-.then(response => response.json())
-.then(data => {
-  if (data.valid) {
-    console.log('Geçerli anahtar. Tema aktif.');
-    // Anahtar geçerliyse kodunuzu çalıştırın
-  } else {
-    console.error('Geçersiz anahtar. Tema devre dışı.');
-    // Anahtar geçersizse işlemi durdurun veya bir uyarı gösterin
-  }
-});
+fetch('https://raw.githubusercontent.com/username/repository/main/allowlist.txt')
+  .then(response => response.text())
+  .then(data => {
+    const validKeys = data.split('\n').map(key => key.trim()); // Satırları ayır ve boşlukları temizle
+    if (validKeys.includes(userKey)) {
+      console.log('Geçerli anahtar. Tema aktif.');
+      // Tema içeriğini çalıştır
+    } else {
+      console.error('Geçersiz anahtar. Tema devre dışı.');
+      // Geçersiz anahtar için işlemi durdur
+    }
+  })
+  .catch(error => console.error('Anahtar doğrulama hatası:', error));
+
 const currentDate = new Date();
 let subscribers = {};
 function subscribe(_0x376b21, _0x20b568) {
