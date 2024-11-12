@@ -1,17 +1,21 @@
-const userKey = "{{ settings.authenticator_key }}"; // Shopify tema ayarlarından gelen anahtar
+// Tema ayarlarından gelen anahtarı alıyoruz
+const userKey = "{{ settings.authenticator_key }}";
 
+// allowlist.json dosyasını GitHub'dan çekiyoruz
 fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.json')
   .then(response => response.json())
   .then(data => {
+    // Anahtar geçerliyse temayı çalıştır
     if (data.keys.includes(userKey)) {
       console.log('Geçerli anahtar. Tema aktif.');
-      // Tema içeriğini çalıştır
+      // Tema kodunu çalıştırmaya devam edin
     } else {
       console.error('Geçersiz anahtar. Tema devre dışı.');
-      // Geçersiz anahtar için işlemi durdur
+      // Geçersiz anahtar için temayı durdurun veya kullanıcıya mesaj gösterin
     }
   })
   .catch(error => console.error('Anahtar doğrulama hatası:', error));
+
 
 
 const currentDate = new Date();
