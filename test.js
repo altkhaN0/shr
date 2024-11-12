@@ -1,6 +1,6 @@
 const userKey = "{{ settings.authenticator_key }}"; // Shopify tema ayarlarından gelen anahtar
 
-fetch('https://raw.githubusercontent.com/username/repository/main/allowlist.txt')
+fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.txt')
   .then(response => response.text())
   .then(data => {
     const validKeys = data.split('\n').map(key => key.trim()); // Satırları ayır ve boşlukları temizle
