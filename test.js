@@ -1,21 +1,3 @@
-// test.js
-fetch('/path/to/allowlist.json')
-  .then(response => response.json())
-  .then(allowlist => {
-    const inputKey = Shopify.theme.settings.authenticator_key;
-    const isValidKey = allowlist.keys.includes(inputKey);
-
-    if (isValidKey) {
-      console.log('Key is valid. Theme activated.');
-      // Burada temanın işlevlerini etkinleştirin
-    } else {
-      console.error('Invalid key. Theme is not activated.');
-      // Gerekirse kullanıcıya bir uyarı gösterin
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching allowlist:', error);
-  });
 const currentDate = new Date();
 let subscribers = {};
 function subscribe(_0x376b21, _0x20b568) {
@@ -37,6 +19,24 @@ function publish(_0x5e90c7, _0x6858b2) {
     });
   }
 }
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('/path/to/allowlist.json')
+    .then(response => response.json())
+    .then(data => {
+      const allowedKeys = data.allowed_keys;
+      const enteredKey = "{{ settings.animations_type }}"; // Liquid kullanımı
+
+      if (allowedKeys.includes(enteredKey)) {
+        console.log('Theme activated.');
+        // Buraya tema çalıştırma ya da aktivasyon kodunuzu ekleyin
+      } else {
+        console.warn('Invalid key. Theme not activated.');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching allowlist:', error);
+    });
+});
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
