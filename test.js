@@ -1,14 +1,26 @@
-fetch('allowlist.json')
-  .then(response => response.json())
+fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
   .then(data => {
+    console.log('JSON içeriği:', data);
     const allowedKeys = data.allowed_keys;
+    const animationsType = "{{ settings.animations_type }}";
+    
     if (allowedKeys.includes(animationsType)) {
       console.log('Geçerli anahtar. Tema aktif ediliyor.');
-      // Burada temanın aktif hale gelmesini sağlayan işlemleri yap
+      // Tema aktif etmek için işlemler buraya gelecek
     } else {
       console.log('Geçersiz anahtar.');
     }
+  })
+  .catch(error => {
+    console.error('JSON dosyasını çekme hatası:', error);
   });
+
 
 const a0_0x262bb0 = a0_0x103f;
 (function(_0x245a1c, _0x15a622) {
