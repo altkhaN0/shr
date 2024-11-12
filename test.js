@@ -1,4 +1,4 @@
-fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.json')
+fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.js')
   .then(response => response.json())
   .then(data => {
     const allowedKeys = data.allowed_keys;
