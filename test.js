@@ -14,24 +14,18 @@ const a0_0x262bb0 = a0_0x103f;
         }
     }
   
-  document.addEventListener('DOMContentLoaded', function() {
-  fetch('https://raw.githubusercontent.com/altkhaN0/shr/refs/heads/main/allowlist.json')
-    .then(response => response.json())
-    .then(data => {
-      console.log('Fetched data:', data); // Debug için eklendi
-      const allowedKeys = data.allowed_keys || []; // JSON anahtarını doğrulayın
-      const enteredKey = "{{ settings.animations_type }}"; 
-      console.log('Entered key:', enteredKey); // Debug için eklendi
+ document.addEventListener('DOMContentLoaded', function() {
+  const allowedKeys = ["TEST1", "TEST2", "TEST3"]; // Test amaçlı olarak doğrudan ekleyin
+  const enteredKey = "{{ settings.animations_type }}";
+  
+  console.log('Entered key:', enteredKey);
 
-      if (allowedKeys.includes(enteredKey)) {
-        console.log('Theme activated.');
-      } else {
-        console.warn('Invalid key. Theme not activated.');
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching allowlist:', error);
-    });
+  if (allowedKeys.includes(enteredKey)) {
+    console.log('Theme activated.');
+    // Burada temayı aktif edecek kodlarınızı çalıştırın
+  } else {
+    console.warn('Invalid key. Theme not activated.');
+  }
 });
   
 }(a0_0x91c8, 0xe2dfe));
