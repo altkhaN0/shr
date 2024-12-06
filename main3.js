@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.log('Auth Key:', userAuthKey); // Debugging için konsola yazdır
 
-    // Token formatını doğrulayan regex deseni (DS-XXXX-XXXX-XXXX-XXXX)
-    const keyPattern = /^DS-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+    // Token formatını doğrulayan regex deseni (DS-XXXX-XXXX-XXXX)
+    const keyPattern = /^DS-\d{4}-\d{4}-\d{4}$/;
 
     // Hata mesajı göstermek için fonksiyon
     function displayError(message) {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Token'ın formatının uygun olup olmadığını kontrol et
     if (!keyPattern.test(userAuthKey)) {
       console.log('Auth Key formatı geçersiz veya boş.');
-      displayError("Geçerli bir Auth Key girin (örnek: DS-A1B2-C3D4-E5F6-G7H8).");
+      displayError("Geçerli bir Auth Key girin (örnek: DS-1234-5678-9012).");
       return; // Doğrulama başarısızsa geri döner
     }
 
